@@ -54,14 +54,30 @@ const Icons = () => {
 
 export default Icons; */
 
-import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "./fontAwesome";
+
+import React from "react";
 
 const Icons = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <div className='flex'>
+      <div>
+      <FontAwesomeIcon 
+        icon="heart"
+        className="hover:text-purple-500 text-2x1" 
+        />
+      </div>
+      <div className="relative">
+      <FontAwesomeIcon 
+        icon="fa-shopping-cart"
+        className="hover:text-purple-500 text-2x1" 
+        />
+      </div>
+      <span className="absolute -top-1 text-white -right-2 bg-purple-500 rounde-full p-1 ">0</span>
 
-export default Icons
+    </div>
+  );
+};
+
+export default Icons;

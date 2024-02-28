@@ -1,4 +1,4 @@
-/*import { library } from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faShoppingCart,
   faHeart,
@@ -29,16 +29,4 @@ library.add(
   faBalanceScale,
   faEye,
   faClose
-); */
-
-import React from 'react'
-
-const fontAwesome = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default fontAwesome
+); 

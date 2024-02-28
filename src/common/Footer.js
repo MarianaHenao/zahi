@@ -67,14 +67,25 @@ const Footer = () => {
 
 //export default Footer; */
 
-import React from 'react'
+import React from "react";
+import { footer } from './../data/Data';
 
 const Footer = () => {
   return (
-    <div>
-      Footer
-    </div>
-  )
-}
+    <div className="bg-white text-black py-8 px-4">
+      <div className="flex-justify-between">
+        <div className="w-1/2">
+          <div className="flex justify-around uppercase">
+            {footer.map((val, index) => (
+              <div key={index}>
+               <div className="text-2x1 font-semibold mb-2">{val.header}</div> 
+              </div>
+            ))}
+           </div>
+          </div>
+        </div>
+      </div>
+  );
+};
 
-export default Footer
+export default Footer;

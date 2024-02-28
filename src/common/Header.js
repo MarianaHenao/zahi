@@ -90,6 +90,10 @@ export default function Header() {
 import React, { useState } from "react";
 import { FaBars, FaTimes} from "react-icons/fa";
 import { Link } from "react-router-dom";
+import NavItem from "../components/NavItem";
+import { nav } from './../data/Data';
+import Icons from "../components/Icons";
+import "./../main.css";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -97,20 +101,24 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="w-full bg-white sticky top-0 z-10 drop-shadow-md ">
-      <div className="flex justify-between p-2 pl-5 pr-4 items-center flex-wrap"> 
+    <div 
+    className={menuOpen ? "" : "w-full bg-white sticky top-0 z-10 drop-shadow-md "
+    }
+    >
+      <div className="flex justify-between p-2 pl-5 pr-4 items-center place-items-center flex-wrap"> 
         <div className="sm:hidden">
-          <FaBars onClick={handleToggleMenu} />
+          {menuOpen ? "" : <FaBars onClick={handleToggleMenu} />}
         </div>
         <div>
-          <Link to="/" className="font-bold text-3xl">
+          <Link to="/" className="text-3xl">
           ZAHI <span className="text-purple-500">ARTESANAL</span>
             </Link>
         </div>
         <div 
-        className={'${
-          menuOpen ? "transform translate-x-0" : "transform translate-x-full "
-        } sm-flex bg-white fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto transition-transform ease-in-out-300'} 
+        className={`${
+          menuOpen ? "transform translate-x-0" 
+          : "transform -translate-x-full "
+        } sm-flex bg-white fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto transition-transform ease-in-out-300`} 
         style={{zIndex: "1111"}}
         > 
           <FaTimes 
@@ -118,14 +126,27 @@ const Header = () => {
           className="absolute top-3 right-3" 
           />
           <ul className="flex flex-col p-4 m-8 font-bold">
-            { nav.map((list, key) => (
+            {nav.map((list, key) => (
                 <div className="mb-3">
-                  <NavItem />
+                  <NavItem key={key} to={list.path} label={list.text} />
                 </div>
-              ))
-            }
+              ))}
           </ul>
         </div>
+
+            <div className="hidden sm:flex">
+            <ul className="flex uppercase font-semibold">
+            {nav.map((list, key) => (
+                <div className="mb-3">
+                  <NavItem key={key} to={list.path} label={list.text} />
+                </div>
+              ))}
+          </ul>
+            </div>
+
+            <div className="top-icon">
+              <Icons />
+            </div>
        </div>
     </div>
   );

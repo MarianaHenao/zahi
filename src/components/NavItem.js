@@ -9,12 +9,15 @@ export default function NavItem({ to, label }) {
   );
 } */
 
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const NavItem = () => {
+const NavItem = ({to, label}) => {
   return (
-    <div>NavItem</div>
-  )
-}
+    <li className="mr-5 hover:text-purple-600">
+      <Link to={to}>{label}</Link>
+    </li>
+  );
+};
 
-export default NavItem
+export default NavItem;
